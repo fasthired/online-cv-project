@@ -1,20 +1,353 @@
 <!DOCTYPE html>
-<!--
-Created using JS Bin
-http://jsbin.com
-
-Copyright (c) 2024 by fasthired (http://jsbin.com/matonog/1/edit)
-
-Released under the MIT license: http://jsbin.mit-license.org
--->
-<meta name="robots" content="noindex">
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor CV Header</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0056b3;
+            font-size: 2rem;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin: 0 0 20px;
+            text-align: center;
+        }
+        h2 {
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            color: #0056b3;
+            font-size: 1.5rem;
+            margin: 0 0 10px;
+        }
+        .highlight {
+            background-color: #e7f0ff;
+            border-left: 4px solid #0056b3;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .highlight-quantifiable {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 10px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #0056b3;
+        }
+        .icon {
+            color: #0056b3;
+            margin-right: 10px;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .footer {
+            margin-top: 20px;
+            border-top: 2px solid #0056b3;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .recommendation {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .recommendation-title {
+            color: #155724;
+            font-weight: bold;
+        }
+        .cv-section {
+            margin-bottom: 30px;
+        }
+        .cv-section h2 {
+            font-size: 1.25rem;
+        }
+        .cv-section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .cv-section ul li {
+            margin-bottom: 10px;
+        }
+        .video-placeholder {
+            position: relative;
+            margin: 20px auto;
+            max-width: 100%;
+            width: calc(100% - 40px); /* Breathing space on the sides */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background: #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .video-placeholder img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+        .video-frame {
+            display: none;
+            margin: 20px auto;
+            max-width: calc(100% - 40px);
+            width: calc(100% - 40px);
+            border: 2px solid #0056b3;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .video-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .social-media {
+            text-align: center;
+            font-size: 1.5em;
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+        .social-media a {
+            color: #0056b3;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        .social-media a:hover {
+            color: #003d7a;
+        }
+        .contact-details {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .work-history-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 2px solid #e7e7e7;
+        }
+        .work-history-item:last-child {
+            border-bottom: none;
+        }
+        .role {
+            font-weight: bold;
+            color: #0056b3;
+        }
+        .date {
+            font-style: italic;
+            color: #555;
+        }
+        .overview {
+            margin-top: 10px;
+        }
+        .duties, .objectives {
+            margin-top: 10px;
+        }
+        .duties li, .objectives li {
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Dr. Jane Doe</h1>
+        <div class="contact-details">
+            Email: janedoe@example.com <br>
+            Phone: (123) 456-7890 <br>
+            Address: 123 University Lane, City, Country
+        </div>
+        <div class="social-media">
+            <a href="https://www.linkedin.com/in/janedoe" target="_blank" title="LinkedIn"><i class="fab fa-linkedin icon"></i></a>
+            <a href="https://twitter.com/janedoe" target="_blank" title="Twitter"><i class="fab fa-twitter icon"></i></a>
+            <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp icon"></i></a>
+        </div>
+        <div class="video-placeholder" onclick="toggleVideo()">
+            <img src="https://img.youtube.com/vi/4WEQtgnBu0I/maxresdefault.jpg" alt="Video Thumbnail" id="videoThumbnail">
+            <div class="play-icon"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="video-frame" id="videoFrame">
+            <iframe id="videoIframe" src="https://www.youtube.com/embed/4WEQtgnBu0I?enablejsapi=1" allowfullscreen></iframe>
+        </div>
+        <div class="cv-info">
+            <div class="cv-section">
+                <h2>Personal Statement</h2>
+                <p>A highly motivated professional with a passion for marketing and a proven track record of success. I am committed to creating impactful marketing campaigns and building strong relationships with clients and stakeholders. My analytical skills, creativity, and dedication make me an asset to any marketing team.</p>
+            </div>
+            <div class="cv-section highlight">
+                <h2>Career Objective</h2>
+                <p>To leverage my expertise in marketing and brand management to drive business growth and deliver outstanding results. Seeking a dynamic role where I can contribute to innovative marketing strategies and enhance brand presence.</p>
+            </div>
+            <div class="cv-section highlight">
+                <h2>Relevant Skills</h2>
+                <ul>
+                    <li>Strategic Marketing Planning</li>
+                    <li>Brand Management</li>
+                    <li>Market Analysis</li>
+                    <li>Campaign Management</li>
+                    <li>Digital Marketing</li>
+                </ul>
+            </div>
+            <div class="cv-section">
+                <h2>Work History</h2>
+                <div class="work-history-item">
+                    <div class="role">Marketing Manager</div>
+                    <div class="date">June 2021 - Present</div>
+                    <div class="overview">
+                        <p><strong>Company:</strong> XYZ Corporation</p>
+                        <p>Overseeing the development and execution of marketing strategies. Leading a team to enhance brand presence and achieve business goals.</p>
+                        <ul class="duties">
+                            <li>Develop and implement marketing plans and strategies.</li>
+                            <li>Manage and mentor the marketing team.</li>
+                            <li>Coordinate with sales and product teams for integrated campaigns.</li>
+                            <li>Analyze market trends and adjust strategies accordingly.</li>
+                            <li>Monitor and report on campaign performance.</li>
+                        </ul>
+                        <div class="highlight-quantifiable">
+                            <ul class="objectives">
+                                <li>Increased brand market share by 15% within the first year.</li>
+                                <li>Led a campaign that boosted lead generation by 40%.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-history-item">
+                    <div class="role">Marketing Coordinator</div>
+                    <div class="date">January 2019 - May 2021</div>
+                    <div class="overview">
+                        <p><strong>Company:</strong> Creative Solutions Ltd.</p>
+                        <p>Coordinated marketing activities and campaigns to support brand objectives. Managed event planning, promotional activities, and market analysis.</p>
+                        <ul class="duties">
+                            <li>Assist in the development of marketing materials and campaigns.</li>
+                            <li>Organize and execute promotional events and trade shows.</li>
+                            <li>Conduct market research and analyze consumer trends.</li>
+                            <li>Manage social media accounts and create engaging content.</li>
+                            <li>Monitor and report on campaign performance and ROI.</li>
+                        </ul>
+                        <div class="highlight-quantifiable">
+                            <ul class="objectives">
+                                <li>Successfully organized 15+ marketing events resulting in a 25% increase in brand engagement.</li>
+                                <li>Enhanced social media presence, increasing followers by 50%.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-history-item">
+                    <div class="role">Marketing Assistant</div>
+                    <div class="date">July 2018 - December 2018</div>
+                    <div class="overview">
+                        <p><strong>Company:</strong> Brand Builders Agency</p>
+                        <p>Supported the marketing team in various tasks including market research, content creation, and campaign execution.</p>
+                        <ul class="duties">
+                            <li>Assist in creating and editing marketing materials.</li>
+                            <li>Conduct research on market trends and competitors.</li>
+                            <li>Support the implementation of marketing campaigns.</li>
+                            <li>Prepare reports on marketing performance and metrics.</li>
+                            <li>Coordinate with vendors and agencies for promotional activities.</li>
+                        </ul>
+                        <div class="highlight-quantifiable">
+                            <ul class="objectives">
+                                <li>Contributed to a successful campaign that increased customer retention by 20%.</li>
+                                <li>Streamlined administrative tasks, improving team efficiency by 15%.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cv-section highlight">
+                <h2>Relevant Certificates</h2>
+                <ul>
+                    <li>Certified Marketing Executive (CME)</li>
+                    <li>Digital Marketing Certificate from HubSpot</li>
+                </ul>
+            </div>
+            <div class="cv-section highlight">
+                <h2>Presentations and Publications</h2>
+                <ul>
+                    <li>“Innovative Marketing Strategies for the Modern Era” - Marketing Conference 2023</li>
+                    <li>“The Future of Digital Advertising” - Published in Marketing Insights Journal, 2022</li>
+                </ul>
+            </div>
+            <div class="cv-section highlight">
+                <h2>Professional Associations</h2>
+                <ul>
+                    <li>Member of the American Marketing Association (AMA)</li>
+                    <li>Certified Member of the Chartered Institute of Marketing (CIM)</li>
+                </ul>
+            </div>
+            <div class="cv-section highlight">
+                <h2>Languages</h2>
+                <ul>
+                    <li>English (Fluent)</li>
+                    <li>Spanish (Intermediate)</li>
+                </ul>
+            </div>
+            <div class="cv-section highlight">
+                <h2>Software Skills</h2>
+                <ul>
+                    <li>Google Analytics</li>
+                    <li>Adobe Creative Suite</li>
+                    <li>Microsoft Office Suite</li>
+                </ul>
+            </div>
+            <div class="cv-section highlight">
+                <h2>Extra Certifications</h2>
+                <ul>
+                    <li>Google Ads Certification</li>
+                    <li>HubSpot Content Marketing Certification</li>
+                </ul>
+            </div>
+            <div class="cv-section highlight">
+                <h2>References</h2>
+                <p>Available upon request.</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Dr. Jane Doe | Marketing Executive | Email: janedoe@example.com</p>
+        </div>
+    </div>
+    <script>
+        function toggleVideo() {
+            const videoFrame = document.getElementById('videoFrame');
+            const videoThumbnail = document.getElementById('videoThumbnail');
+            if (videoFrame.style.display === 'block') {
+                videoFrame.style.display = 'none';
+                videoThumbnail.style.display = 'block'; // Show the thumbnail
+            } else {
+                videoFrame.style.display = 'block';
+                videoThumbnail.style.display = 'none'; // Hide the thumbnail
+            }
+        }
 
+        // Initialize with the thumbnail visible and the video frame hidden
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('videoThumbnail').style.display = 'block';
+            document.getElementById('videoFrame').style.display = 'none';
+        });
+    </script>
 </body>
 </html>
