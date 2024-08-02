@@ -98,31 +98,40 @@
         .video-placeholder {
             position: relative;
             margin: 20px auto;
+            width: 100%;
             max-width: 100%;
-            width: calc(100% - 40px); /* Breathing space on the sides */
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            height: auto;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
             background: #ddd;
             border-radius: 8px;
             cursor: pointer;
+            overflow: hidden;
             text-align: center;
         }
         .video-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             border-radius: 8px;
-            display: block;
         }
         .video-frame {
             display: none;
             margin: 20px auto;
-            max-width: calc(100% - 40px);
-            width: calc(100% - 40px);
+            width: 100%;
+            max-width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            position: relative;
             border: 2px solid #0056b3;
             border-radius: 8px;
             overflow: hidden;
-            position: relative;
         }
         .video-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             border: none;
@@ -188,7 +197,6 @@
         </div>
         <div class="video-placeholder" onclick="toggleVideo()">
             <img src="https://img.youtube.com/vi/4WEQtgnBu0I/maxresdefault.jpg" alt="Video Thumbnail" id="videoThumbnail">
-            <div class="play-icon"><i class="fas fa-play"></i></div>
         </div>
         <div class="video-frame" id="videoFrame">
             <iframe id="videoIframe" src="https://www.youtube.com/embed/4WEQtgnBu0I?enablejsapi=1" allowfullscreen></iframe>
@@ -230,7 +238,7 @@
                         <div class="highlight-quantifiable">
                             <ul class="objectives">
                                 <li>Increased brand market share by 15% within the first year.</li>
-                                <li>Led a campaign that boosted lead generation by 40%.</li>
+                                <li>Achieved a 30% growth in online engagement through targeted campaigns.</li>
                             </ul>
                         </div>
                     </div>
