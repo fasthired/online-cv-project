@@ -95,43 +95,43 @@
         .cv-section ul li {
             margin-bottom: 10px;
         }
-        .video-placeholder {
+        .video-container {
             position: relative;
-            margin: 20px auto;
             width: 100%;
             max-width: 100%;
-            height: auto;
-            padding-top: 56.25%; /* 16:9 aspect ratio */
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
             background: #ddd;
             border-radius: 8px;
-            cursor: pointer;
             overflow: hidden;
-            text-align: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
         }
-        .video-placeholder img {
+        .video-placeholder, .video-frame {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .video-placeholder {
+            background: #ddd;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-placeholder img {
+            max-width: 100%;
+            height: auto;
             border-radius: 8px;
         }
         .video-frame {
             display: none;
-            margin: 20px auto;
-            width: 100%;
-            max-width: 100%;
-            padding-top: 56.25%; /* 16:9 aspect ratio */
-            position: relative;
             border: 2px solid #0056b3;
-            border-radius: 8px;
-            overflow: hidden;
         }
         .video-frame iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             border: none;
@@ -195,11 +195,13 @@
             <a href="https://twitter.com/janedoe" target="_blank" title="Twitter"><i class="fab fa-twitter icon"></i></a>
             <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp icon"></i></a>
         </div>
-        <div class="video-placeholder" onclick="toggleVideo()">
-            <img src="https://img.youtube.com/vi/4WEQtgnBu0I/maxresdefault.jpg" alt="Video Thumbnail" id="videoThumbnail">
-        </div>
-        <div class="video-frame" id="videoFrame">
-            <iframe id="videoIframe" src="https://www.youtube.com/embed/4WEQtgnBu0I?enablejsapi=1" allowfullscreen></iframe>
+        <div class="video-container">
+            <div class="video-placeholder" onclick="toggleVideo()">
+                <img src="https://img.youtube.com/vi/4WEQtgnBu0I/maxresdefault.jpg" alt="Video Thumbnail" id="videoThumbnail">
+            </div>
+            <div class="video-frame" id="videoFrame">
+                <iframe id="videoIframe" src="https://www.youtube.com/embed/4WEQtgnBu0I?enablejsapi=1" allowfullscreen></iframe>
+            </div>
         </div>
         <div class="cv-info">
             <div class="cv-section">
@@ -237,8 +239,8 @@
                         </ul>
                         <div class="highlight-quantifiable">
                             <ul class="objectives">
-                                <li>Increased brand market share by 15% within the first year.</li>
-                                <li>Achieved a 30% growth in online engagement through targeted campaigns.</li>
+                                <li>Increased brand awareness by 40% through targeted campaigns.</li>
+                                <li>Achieved a 30% growth in annual sales revenue.</li>
                             </ul>
                         </div>
                     </div>
@@ -356,6 +358,26 @@
             document.getElementById('videoThumbnail').style.display = 'block';
             document.getElementById('videoFrame').style.display = 'none';
         });
+
+        // Listen for iframe state changes to handle play/pause
+        window.onYouTubeIframeAPIReady = function() {
+            const player = new YT.Player('videoIframe', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+
+            function onPlayerStateChange(event) {
+                const videoFrame = document.getElementById('videoFrame');
+                const videoThumbnail = document.getElementById('videoThumbnail');
+                if (event.data == YT.PlayerState.PLAYING) {
+                    videoThumbnail.style.display = 'none'; // Hide the thumbnail
+                } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+                    videoThumbnail.style.display = 'block'; // Show the thumbnail
+                }
+            }
+        };
     </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
